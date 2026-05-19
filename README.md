@@ -11,6 +11,9 @@ AI-assisted operational platform designed to evaluate deployment risks, analyze 
 - Operational risk metadata structure
 - FastAPI backend foundation
 - Modular project architecture
+- Deployment risk scoring engine
+- Operational risk intelligence APIs
+- Dynamic deployment risk classification
 
 ---
 
@@ -85,3 +88,26 @@ Upcoming enhancements include:
 - AI-assisted deployment advisory
 - contextual operational intelligence
 - semantic risk analysis workflows
+
+
+### Deployment Risk Analysis
+
+```http
+GET /changes/risk-analysis
+```
+
+Calculates operational deployment risk scores using deployment metadata, rollback availability, regional impact, and historical failure indicators.
+
+
+
+---
+
+## Risk Intelligence Workflow
+
+The platform includes a deterministic operational risk engine designed to evaluate deployment safety using enterprise operational signals.
+
+Current scoring considers:
+- deployment timing
+- rollback availability
+- regional impact
+- historical deployment failures
