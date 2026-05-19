@@ -71,3 +71,17 @@ Ongoing development areas include:
 - AI-assisted operational advisory
 - contextual operational intelligence
 - workflow orchestration
+
+
+---
+
+## Current Development Status
+
+The platform is currently in the foundational architecture phase.
+
+Upcoming enhancements include:
+- deployment risk scoring
+- historical change retrieval
+- AI-assisted deployment advisory
+- contextual operational intelligence
+- semantic risk analysis workflows
