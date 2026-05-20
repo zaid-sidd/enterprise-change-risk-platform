@@ -4,6 +4,8 @@ from app.datasets.sample_changes import deployment_changes
 
 from app.services.risk_service import calculate_change_risk
 
+from app.services.history_service import retrieve_historical_changes
+
 
 app = FastAPI(
     title="Enterprise Change Risk Platform",
@@ -58,4 +60,23 @@ def analyze_change_risks():
     return {
         "total_changes_analyzed": len(analyzed_changes),
         "risk_analysis": analyzed_changes
+    }
+
+
+@app.get(
+    "/changes/history/{service_name}",
+    tags=["Historical Intelligence"],
+    summary="Retrieve historical deployment failures",
+    description="Fetches historical deployment failures and operational resolutions for enterprise services."
+)
+def get_historical_changes(service_name: str):
+
+    historical_matches = retrieve_historical_changes(
+        service_name
+    )
+
+    return {
+        "service": service_name,
+        "historical_matches_found": len(historical_matches),
+        "historical_changes": historical_matches
     }

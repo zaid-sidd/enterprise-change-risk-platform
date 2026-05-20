@@ -14,6 +14,9 @@ AI-assisted operational platform designed to evaluate deployment risks, analyze 
 - Deployment risk scoring engine
 - Operational risk intelligence APIs
 - Dynamic deployment risk classification
+- Historical deployment failure retrieval
+- Context-aware operational risk analysis
+- Historical intelligence enrichment workflows
 
 ---
 
@@ -111,3 +114,21 @@ Current scoring considers:
 - rollback availability
 - regional impact
 - historical deployment failures
+
+
+### Historical Deployment Intelligence
+
+```http
+GET /changes/history/{service_name}
+```
+
+Retrieves historical deployment failures, operational root causes, and resolution workflows for enterprise services.
+
+
+---
+
+## Historical Intelligence Workflow
+
+The platform includes a historical retrieval layer for enriching deployment risk analysis with operational context and known failure patterns.
+
+Current implementation uses service-based retrieval and is designed to evolve toward semantic operational intelligence workflows.
