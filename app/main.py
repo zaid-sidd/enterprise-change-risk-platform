@@ -1,21 +1,17 @@
 from fastapi import FastAPI
-
 from app.datasets.sample_changes import deployment_changes
-
 from app.services.risk_service import calculate_change_risk
-
 from app.services.history_service import retrieve_historical_changes
-
 from app.models.change_models import DeploymentChangeRequest
-
 from app.services.risk_service import (
     analyze_submitted_change
 )
-
 from app.services.approval_service import (
     generate_approval_decision
 )
-
+from app.services.report_service import (
+    generate_executive_report
+)
 
 app = FastAPI(
     title="Enterprise Change Risk Platform",
@@ -119,4 +115,22 @@ def get_approval_decision(
 
     return generate_approval_decision(
         risk_level.capitalize()
+    )
+
+
+@app.post(
+    "/changes/report",
+    tags=["Executive Reporting"],
+    summary="Generate executive deployment report"
+)
+def generate_report(
+    change: DeploymentChangeRequest
+):
+
+    analysis = analyze_submitted_change(
+        change.model_dump()
+    )
+
+    return generate_executive_report(
+        analysis
     )
