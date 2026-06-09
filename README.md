@@ -17,6 +17,9 @@ AI-assisted operational platform designed to evaluate deployment risks, analyze 
 - Historical deployment failure retrieval
 - Context-aware operational risk analysis
 - Historical intelligence enrichment workflows
+- Operational deployment advisory engine
+- Monitoring strategy recommendations
+- Rollback planning guidance
 
 ---
 
@@ -45,6 +48,14 @@ GET /changes
 ```
 
 ---
+
+### Deployment Advisory
+
+```http
+GET /changes/advisory/{risk_level}
+```
+
+Generates operational deployment recommendations, monitoring guidance, and rollback strategies based on calculated deployment risk.
 
 ## Project Structure
 
@@ -132,3 +143,17 @@ Retrieves historical deployment failures, operational root causes, and resolutio
 The platform includes a historical retrieval layer for enriching deployment risk analysis with operational context and known failure patterns.
 
 Current implementation uses service-based retrieval and is designed to evolve toward semantic operational intelligence workflows.
+
+
+---
+
+## Operational Advisory Workflow
+
+The platform includes an operational advisory engine that converts deployment risk classifications into actionable deployment recommendations.
+
+Recommendations currently include:
+- deployment approval guidance
+- monitoring requirements
+- rollback planning strategies
+
+The advisory layer is designed to support enterprise change management and deployment governance workflows.

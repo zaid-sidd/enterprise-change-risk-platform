@@ -1,11 +1,14 @@
 from app.services.history_service import retrieve_historical_changes
+from app.services.advisory_service import generate_operational_advisory
+
 
 def calculate_change_risk(change):
 
     risk_score = 0
 
     historical_matches = retrieve_historical_changes(
-    change["service"]
+        change["service"],
+        change["change_type"]
     )
 
     if change["deployment_window"] == "Peak Hours":
@@ -35,10 +38,25 @@ def calculate_change_risk(change):
     else:
         risk_level = "Low"
 
+    advisory = generate_operational_advisory(
+        risk_level
+    )
+
     return {
         "change_id": change["change_id"],
         "service": change["service"],
         "risk_score": risk_score,
         "calculated_risk": risk_level,
-        "historical_matches_found": len(historical_matches)
+        "historical_matches_found": len(historical_matches),
+
+        "top_historical_match": (
+            historical_matches[0]["change"]["failure_pattern"]
+            if historical_matches else None
+        ),
+
+        "recommended_action": advisory["recommended_action"],
+
+        "monitoring_level": advisory["monitoring_level"],
+
+        "rollback_strategy": advisory["rollback_strategy"]
     }
