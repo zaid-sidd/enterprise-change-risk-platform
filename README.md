@@ -20,7 +20,9 @@ AI-assisted operational platform designed to evaluate deployment risks, analyze 
 - Operational deployment advisory engine
 - Monitoring strategy recommendations
 - Rollback planning guidance
-
+- Dynamic deployment submission APIs
+- Schema-based request validation
+- User-driven risk intelligence workflows
 ---
 
 ## Tech Stack
@@ -56,6 +58,28 @@ GET /changes/advisory/{risk_level}
 ```
 
 Generates operational deployment recommendations, monitoring guidance, and rollback strategies based on calculated deployment risk.
+
+
+### Analyze Deployment Change
+
+```http
+POST /changes/analyze
+```
+
+Accepts deployment change requests and generates operational risk intelligence dynamically.
+
+Example Request:
+
+```json
+{
+  "service": "Payment Gateway",
+  "change_type": "Infrastructure Update",
+  "deployment_window": "Peak Hours",
+  "affected_regions": 3,
+  "rollback_available": false,
+  "recent_failures": 2
+}
+```
 
 ## Project Structure
 
@@ -157,3 +181,18 @@ Recommendations currently include:
 - rollback planning strategies
 
 The advisory layer is designed to support enterprise change management and deployment governance workflows.
+
+
+---
+
+## Dynamic Risk Analysis Workflow
+
+Deployment requests are submitted through API endpoints and validated using typed request models before entering the risk intelligence pipeline.
+
+Workflow:
+
+Request Validation
+→ Risk Scoring
+→ Historical Intelligence
+→ Operational Advisory
+→ Response Generation

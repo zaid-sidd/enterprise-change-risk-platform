@@ -6,6 +6,12 @@ from app.services.risk_service import calculate_change_risk
 
 from app.services.history_service import retrieve_historical_changes
 
+from app.models.change_models import DeploymentChangeRequest
+
+from app.services.risk_service import (
+    analyze_submitted_change
+)
+
 
 app = FastAPI(
     title="Enterprise Change Risk Platform",
@@ -62,6 +68,23 @@ def analyze_change_risks():
         "risk_analysis": analyzed_changes
     }
 
+@app.post(
+    "/changes/analyze",
+    tags=["Risk Intelligence"],
+    summary="Analyze submitted deployment change",
+    description="Accepts deployment change requests and generates operational risk intelligence."
+)
+def analyze_change(
+    change: DeploymentChangeRequest
+):
+
+    result = analyze_submitted_change(
+        change.model_dump()
+    )
+
+    return {
+        "analysis": result
+    }
 
 @app.get(
     "/changes/history/{service_name}",

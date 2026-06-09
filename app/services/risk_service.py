@@ -60,3 +60,10 @@ def calculate_change_risk(change):
 
         "rollback_strategy": advisory["rollback_strategy"]
     }
+
+
+def analyze_submitted_change(change_data):
+
+    return calculate_change_risk(
+        change_data
+    )
