@@ -23,6 +23,10 @@ AI-assisted operational platform designed to evaluate deployment risks, analyze 
 - Dynamic deployment submission APIs
 - Schema-based request validation
 - User-driven risk intelligence workflows
+- Deployment approval recommendation engine
+- Operational governance workflows
+- CAB-style decision support
+
 ---
 
 ## Tech Stack
@@ -80,6 +84,15 @@ Example Request:
   "recent_failures": 2
 }
 ```
+
+### Deployment Approval Decision
+
+```http
+GET /changes/approval/{risk_level}
+```
+
+Generates deployment approval recommendations based on calculated operational risk levels.
+
 
 ## Project Structure
 
@@ -196,3 +209,18 @@ Request Validation
 → Historical Intelligence
 → Operational Advisory
 → Response Generation
+
+
+---
+
+## Deployment Governance Workflow
+
+The platform includes an approval recommendation layer designed to support enterprise deployment governance processes.
+
+Current decisions include:
+
+- Approved
+- Conditional Approval
+- Rejected
+
+Approval recommendations are generated using deployment risk classifications and operational intelligence outputs.

@@ -1,5 +1,8 @@
 from app.services.history_service import retrieve_historical_changes
 from app.services.advisory_service import generate_operational_advisory
+from app.services.approval_service import (
+    generate_approval_decision
+)
 
 
 def calculate_change_risk(change):
@@ -42,12 +45,17 @@ def calculate_change_risk(change):
         risk_level
     )
 
+    approval = generate_approval_decision(
+        risk_level
+    )
+
     return {
         "change_id": change["change_id"],
         "service": change["service"],
         "risk_score": risk_score,
         "calculated_risk": risk_level,
         "historical_matches_found": len(historical_matches),
+        "approval": approval,
 
         "top_historical_match": (
             historical_matches[0]["change"]["failure_pattern"]
@@ -58,7 +66,9 @@ def calculate_change_risk(change):
 
         "monitoring_level": advisory["monitoring_level"],
 
-        "rollback_strategy": advisory["rollback_strategy"]
+        "rollback_strategy": advisory["rollback_strategy"],
+        "approval_status": approval["approval_status"],
+        "approval_reason": approval["approval_reason"],
     }
 
 

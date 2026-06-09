@@ -12,6 +12,10 @@ from app.services.risk_service import (
     analyze_submitted_change
 )
 
+from app.services.approval_service import (
+    generate_approval_decision
+)
+
 
 app = FastAPI(
     title="Enterprise Change Risk Platform",
@@ -103,3 +107,16 @@ def get_historical_changes(service_name: str):
         "historical_matches_found": len(historical_matches),
         "historical_changes": historical_matches
     }
+
+@app.get(
+    "/changes/approval/{risk_level}",
+    tags=["Approval Governance"],
+    summary="Generate deployment approval decision"
+)
+def get_approval_decision(
+    risk_level: str
+):
+
+    return generate_approval_decision(
+        risk_level.capitalize()
+    )
