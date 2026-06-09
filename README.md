@@ -29,6 +29,9 @@ AI-assisted operational platform designed to evaluate deployment risks, analyze 
 - Executive deployment reporting
 - Business impact summarization
 - Stakeholder-oriented risk communication
+- Executive deployment reporting
+- Business impact summarization
+- Stakeholder-oriented risk communication
 
 ---
 
@@ -95,6 +98,15 @@ GET /changes/approval/{risk_level}
 ```
 
 Generates deployment approval recommendations based on calculated operational risk levels.
+
+
+### Executive Deployment Report
+
+```http
+POST /changes/report
+```
+
+Generates a stakeholder-friendly deployment report containing deployment risk, approval status, business impact, and recommended actions.
 
 
 ### Executive Deployment Report
@@ -235,6 +247,20 @@ Current decisions include:
 - Rejected
 
 Approval recommendations are generated using deployment risk classifications and operational intelligence outputs.
+
+
+---
+
+## Executive Reporting Workflow
+
+The platform includes a reporting layer that transforms technical deployment analysis into business-oriented deployment summaries.
+
+Reporting outputs include:
+
+- deployment risk classification
+- approval recommendation
+- business impact summary
+- operational action guidance
 
 
 ---
